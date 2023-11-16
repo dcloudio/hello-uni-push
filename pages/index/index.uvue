@@ -1,0 +1,89 @@
+<template>
+	<view class="content">
+		<button class="normal-button" type="default" @click="handleCreateChannel">创建通知渠道</button>
+		<button class="normal-button" type="default" @click="handleGetAllChannels">获取所有通知渠道信息</button>
+		<button class="normal-button" type="default" @click="handleCreateLocalNotification">创建本地通知消息</button>
+		<button class="normal-button" type="default" @click="handleGetClientId">获取cid</button>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				isXM: false
+			}
+		},
+		onLoad() {
+			uni.onPushMessage((res) => {
+				console.log("onpushmessage1 : " + JSON.stringify(res));
+			})
+		},
+		methods: {
+			handleCreateChannel() {
+				const manager = uni.getChannelManager()
+				manager.setPushChannel({
+					channelId: this.isXM ? "112735" : "msg-pass",
+					channelDesc: "留言审核通过",
+					soundName: "pushsound"
+				} as SetPushChannelOptions)
+			},
+			handleGetAllChannels() {
+				const manager = uni.getChannelManager()
+				console.log("channels : " + manager.getAllChannels());
+			},
+			handleCreateLocalNotification() {
+				uni.createPushMessage({
+					title: "halo",
+					content: "world",
+					// cover:true,
+					channelId: this.isXM ? "112735" : "msg-pass",
+					when: Date.now() + 10000,
+					icon: "/static/xxxx.jpeg",
+					// delay:5,
+					payload: {
+						pkey: "pvalue1"
+					},
+					category: "IM",
+					success(res) {
+						console.log("res: " + res);
+					},
+					fail(e) {
+						console.log("fail :" + e);
+					}
+				})
+			},
+			handleGetClientId() {
+				uni.getPushClientId({
+					complete(e : any) {
+						console.log(e);
+					}
+				})
+			},
+		}
+	}
+</script>
+
+<style>
+	.normal-button {
+		width: 100%;
+	}
+
+	.content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.logo {
+		height: 200rpx;
+		width: 200rpx;
+		margin-top: 200rpx;
+		margin-bottom: 50rpx;
+	}
+
+	.title {
+		font-size: 36rpx;
+		color: #8f8f94;
+	}
+</style>
