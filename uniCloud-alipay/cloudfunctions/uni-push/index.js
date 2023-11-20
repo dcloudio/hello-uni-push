@@ -5,7 +5,7 @@ exports.main = async (event, context) => {
 		appId: "__UNI__EE8E36A",
 		"getRequestBody": true,
 	}).sendMessage({
-		"push_clientid": "fe755e0a33a45f52706f3d8712c3c433",
+		"push_clientid": "60bd68ea05901cdf7b07cadb9f39c3a0",
 		"title": "留言",
 		"content": "留言审核通过",
 		"payload": {
@@ -20,7 +20,8 @@ exports.main = async (event, context) => {
 			// 小米离线推送
 			"XM": "112735",
 			// oppo离线推送
-			"OP": "msg-pass"
+			"OP": "msg-pass",
+			// "VV": "msg-pass"
 		},
 		"options": {
 			"HW": {
@@ -38,6 +39,9 @@ exports.main = async (event, context) => {
 			},
 			"XM": {
 				"/extra.channel_id": "112735"
+			},
+			"VV": {
+				"/category": "IM", //二级分类。
 			}
 		}
 	})

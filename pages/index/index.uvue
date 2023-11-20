@@ -39,7 +39,7 @@
 					// cover:true,
 					channelId: this.isXM ? "112735" : "msg-pass",
 					when: Date.now() + 10000,
-					icon: "/static/xxxx.jpeg",
+					icon: "/static/logo.jpg",
 					// delay:5,
 					payload: {
 						pkey: "pvalue1"
