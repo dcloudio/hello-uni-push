@@ -33,25 +33,32 @@
 				console.log("channels : " + manager.getAllChannels());
 			},
 			handleCreateLocalNotification() {
-				uni.createPushMessage({
-					title: "halo",
-					content: "world",
-					// cover:true,
-					channelId: this.isXM ? "112735" : "msg-pass",
-					when: Date.now() + 10000,
-					icon: "/static/logo.jpg",
-					// delay:5,
-					payload: {
-						pkey: "pvalue1"
-					},
-					category: "IM",
-					success(res) {
-						console.log("res: " + res);
-					},
-					fail(e) {
-						console.log("fail :" + e);
-					}
-				})
+				if(uni.getAppAuthorizeSetting().notificationAuthorized == "authorized"){
+					uni.createPushMessage({
+						title: "halo",
+						content: "world",
+						// cover:true,
+						channelId: this.isXM ? "112735" : "msg-pass",
+						when: Date.now() + 10000,
+						icon: "/static/logo.jpg",
+						// delay:5,
+						payload: {
+							pkey: "pvalue1"
+						},
+						category: "IM",
+						success(res) {
+							console.log("res: " + res);
+						},
+						fail(e) {
+							console.log("fail :" + e);
+						}
+					})
+				}else{
+					uni.showToast({
+						title:"请在设置中开启通知权限",
+						icon:"error"
+					})
+				}
 			},
 			handleGetClientId() {
 				uni.getPushClientId({
