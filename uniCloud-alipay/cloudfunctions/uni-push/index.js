@@ -41,7 +41,10 @@ exports.main = async (event, context) => {
 				"/extra.channel_id": "112735"
 			},
 			"VV": {
-				"/category": "IM", //二级分类。
+				"/category": "NORMAL", //二级分类。
+			},
+			"HO": {
+				"/android/notification/importance": "NORMAL"
 			}
 		}
 	})
