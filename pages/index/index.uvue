@@ -21,19 +21,26 @@
 		},
 		methods: {
 			handleCreateChannel() {
+				// #ifdef APP-ANDROID
 				const manager = uni.getChannelManager()
 				manager.setPushChannel({
 					channelId: this.isXM ? "112735" : "msg-pass",
 					channelDesc: "留言审核通过",
 					soundName: "pushsound"
 				} as SetPushChannelOptions)
+				// #endif
 			},
 			handleGetAllChannels() {
+				// #ifdef APP-ANDROID
 				const manager = uni.getChannelManager()
 				console.log("channels : " + manager.getAllChannels());
+				// #endif
 			},
 			handleCreateLocalNotification() {
+				// #ifdef APP-ANDROID
 				if(uni.getAppAuthorizeSetting().notificationAuthorized == "authorized"){
+				// #endif
+				
 					uni.createPushMessage({
 						title: "halo",
 						content: "world",
@@ -53,12 +60,14 @@
 							console.log("fail :" + e);
 						}
 					})
+					// #ifdef APP-ANDROID
 				}else{
 					uni.showToast({
 						title:"请在设置中开启通知权限",
 						icon:"error"
 					})
 				}
+				// #endif
 			},
 			handleGetClientId() {
 				uni.getPushClientId({

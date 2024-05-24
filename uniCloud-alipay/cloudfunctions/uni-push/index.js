@@ -5,14 +5,16 @@ exports.main = async (event, context) => {
 		appId: "__UNI__EE8E36A",
 		"getRequestBody": true,
 	}).sendMessage({
-		"push_clientid": "60bd68ea05901cdf7b07cadb9f39c3a0",
+		"push_clientid": "b993602729659fc6e6c07526e03d351d",
 		"title": "留言",
 		"content": "留言审核通过",
 		"payload": {
 			"name": "留言审核通过",
 			"time": Date.now()
 		},
+		// "payload":"1",
 		// "force_notification":true,
+		// "content_available":1,
 		// 离线推送厂商信息配置，需要到云厂商后台申请
 		"channel": {
 			// 华为离线推送
@@ -25,10 +27,10 @@ exports.main = async (event, context) => {
 		},
 		"options": {
 			"HW": {
-				"/message/android/notification/default_sound": true,
+				"/message/android/notification/default_sound": false,
 				"/message/android/notification/importance": "NORMAL",
 				"/message/android/notification/channel_id": "msg-pass",
-				"/message/android/notification/sound": "pushsound",
+				"/message/android/notification/sound": "/raw/pushsound",
 				"/message/android/category": "IM"
 			},
 			"OP": {
