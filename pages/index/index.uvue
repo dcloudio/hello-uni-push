@@ -3,6 +3,8 @@
 		<button class="normal-button" type="default" @click="handleCreateChannel">创建通知渠道</button>
 		<button class="normal-button" type="default" @click="handleGetAllChannels">获取所有通知渠道信息</button>
 		<button class="normal-button" type="default" @click="handleCreateLocalNotification">创建本地通知消息</button>
+		<button class="normal-button" type="default" @click="handleSetBadge">设置角标</button>
+		<button class="normal-button" type="default" @click="handleCleanBadge">清空角标</button>
 		<button class="normal-button" type="default" @click="handleGetClientId">获取cid</button>
 	</view>
 </template>
@@ -76,6 +78,12 @@
 					}
 				})
 			},
+			handleSetBadge(){
+				uni.setAppBadgeNumber(8)
+			},
+			handleCleanBadge(){
+				uni.setAppBadgeNumber(0)
+			}
 		}
 	}
 </script>
