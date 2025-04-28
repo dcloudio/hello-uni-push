@@ -1,6 +1,6 @@
 ### uni-push 示例项目
 
-### 版本号与 HBuilder 版本对应关系
+### 仓库分支与 HBuilder 版本对应关系
 
 - master 对应 [HBuilder](https://www.dcloud.io/hbuilderx.html) 正式版
 - alpha 对应 [HBuilder](https://www.dcloud.io/hbuilderx.html) Alpha 版
